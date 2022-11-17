@@ -752,4 +752,6 @@ image::imgs/hello-front-aws.png[]
 
 == Questions ?
 
+https://github.com/darken33/ws-everything-as-code
+
 image::imgs/questions.png[]
