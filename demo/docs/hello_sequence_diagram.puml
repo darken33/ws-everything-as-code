@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+title "Sequence Diagramm - Hello World"
+
+actor "Client"
+boundary "Portail"
+boundary "HelloAPI"
+
+activate Client
+Client -> Portail ++: connexion() 
+Portail -> HelloAPI ++: GET /api/v1/hello
+Portail <- HelloAPI --: { message: "Hello World !"}
+Client <- Portail --: page_accueil
+Client -> Portail ++: submit()
+Portail -> HelloAPI ++: GET /api/v1/hello/fifi
+Portail <- HelloAPI --: { message: "Hello Fifi !"}
+Client <- Portail --: page_hello
+deactivate Client 
+
+@enduml

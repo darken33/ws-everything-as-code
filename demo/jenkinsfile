@@ -1,0 +1,66 @@
+node() {
+
+    final def gitParams = [
+        urlProject   : #TO COMPLETE,
+        credentialsId: #TO COMPLETE"
+    ]
+
+    final def workspace = pwd()
+    final def project_path = "${workspace}/"
+    final def timestamp = new Date().format('yyyyMMddHHmmss')
+
+    stage('CLEAN WORKSPACE') {
+        echo "########## CLEAN WORKSPACE ${workspace} ##########"
+        sh "rm -rf ${workspace}/*"
+    }
+
+    stage('CHECKOUT') {
+        echo "########## GIT CLONE ##########"
+        git branch: "master", credentialsId: "${gitParams.credentialsId}", url: "${gitParams.urlProject}"
+    }
+
+    stage('PROVISIONNING') {
+        echo "########## TERRAFORM PLAN ##########"
+        sh "cd infra && terraform plan"
+        echo "########## TERRAFORM APPLY ##########"
+        sh "cd infra && terraform apply -auto-approve"
+    }
+
+    stage('BUILD HELLO-BACK') {
+        echo "########## GENERATE JAR BY MAVEN ##########"
+        sh "cd ${workspace}/back/hello-api && mvn clean package -U"
+        echo "########## ZIP PACKAGE ##########"
+        sh "cp ${workspace}/back/hello-api/target/classes/Procfile ${workspace}/back/hello-api/target/  && cd ${workspace}/back/hello-api/target/ && zip hello-back.zip helloapi-0.0.5-SNAPSHOT.jar server.js Procfile"
+    }
+
+    stage('BUILD HELLO-FRONT') {
+        echo "########## GENERATE BY NG ##########"
+        sh "cd ${workspace}/front/hello-world && ng build"
+        echo "########## ZIP PACKAGE ##########"
+        sh "cp -r ${workspace}/front/hello-world/dist ${workspace}/front/hello-world/server/ && cd ${workspace}/front/hello-world/server && zip hello-front.zip dist/ server.js package.json"
+    }
+
+    stage('DEPLOY AWS HELLO-BACK') {
+        echo "Uploader le composant sur hello-deployment-bucket : hello-back"
+        sh "aws s3 cp ${workspace}/back/hello-api/target/hello-api-0.0.5-SNAPSHOT.zip " +
+            "s3://hello-deployment-bucket/hello-back.${timestamp}.zip"
+        echo "Créer une nouvelle version de l’application hello-back.${timestamp}"
+        sh "aws elasticbeanstalk create-application-version --application-name hello-back " +
+            "--version-label hello-back.${timestamp} --source-bundle S3Bucket=\"hello-deployment-bucket\",S3Key=\"hello-back.${timestamp}.zip\" " +
+            "--no-auto-create-application --process"
+        echo "Déployer la nouvelle version dans l’environnement hello-back-env : hello-back.${timestamp}"
+        sh "aws elasticbeanstalk update-environment --environment-name hello-back-env --version-label hello-back.${timestamp}"
+    }
+
+    stage('DEPLOY AWS HELLO-FRONT') {
+        echo "Uploader le composant sur hello-deployment-bucket : hello-front"
+        sh "aws s3 cp ${workspace}/front/hello-world/hello-front.zip " +
+            "s3://hello-deployment-bucket/hello-front.${timestamp}.zip"
+        echo "Créer une nouvelle version de l’application hello-front.${timestamp}"
+        sh "aws elasticbeanstalk create-application-version --application-name hello-front " +
+            "--version-label hello-front.${timestamp} --source-bundle S3Bucket=\"hello-deployment-bucket\",S3Key=\"hello-front.${timestamp}.zip\" " +
+            "--no-auto-create-application --process"
+        echo "Déployer la nouvelle version dans l’environnement hello-front-env : hello-front.${timestamp}"
+        sh "aws elasticbeanstalk update-environment --environment-name hello-front-env --version-label hello-front.${timestamp}"
+    }
+}

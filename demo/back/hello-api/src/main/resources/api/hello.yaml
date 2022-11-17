@@ -1,0 +1,88 @@
+openapi: 3.0.1
+info:
+  title: Hello API
+  description: Hello API
+  termsOfService: http://localhost:8080/swagger-ui.html
+  contact:
+    name: Philippe Bousquet
+    url: http://sqli.com
+    email: pbousquet@sqli.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: 0.0.5
+servers:
+- url: //localhost:8080/
+tags:
+- name: Hello
+  description: Hello API
+paths:
+  /api/v1/hello:
+    get:
+      tags:
+      - Hello
+      summary: Saluer le monde
+      operationId: helloUsingGET_1
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloDto'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /api/v1/hello/{name}:
+    get:
+      tags:
+      - Hello
+      summary: Saluer une personne en particulier
+      operationId: helloUsingGET
+      parameters:
+      - name: name
+        in: path
+        description: Nom de la personne à saluer
+        required: true
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 25
+          pattern: "^[a-zA-Z0-9 ,.'-]+$"
+          example: "fifi"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloDto'
+        400:
+          description: Mauvaise requête, 123 n'est pas une valeurs valide
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    HelloDto:
+      title: HelloDto
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Hello World"

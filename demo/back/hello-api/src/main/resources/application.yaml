@@ -1,0 +1,14 @@
+server:
+    port: 5000
+    error:
+        include-message: always
+        include-binding-errors: always
+        include-stacktrace: never
+        include-exception: false
+springdoc:
+    show-actuator: false
+    api-docs:
+        version: openapi_3_0
+        enabled: true
+    swagger-ui:
+        enabled: true

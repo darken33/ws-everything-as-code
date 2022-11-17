@@ -1,0 +1,9 @@
+vpc_id                    = "vpc-f5799d8c"
+instance_type             = "t2.micro"
+minsize                   = 1
+maxsize                   = 1
+public_subnets            = ["subnet-b19dccd7", "subnet-f0c351aa", "subnet-c9476781"] # Service Subnet
+elb_public_subnets        = ["subnet-b19dccd7", "subnet-f0c351aa", "subnet-c9476781"] # ELB Subnet
+tier                      = "WebServer"
+solution_stack_name_back  = "64bit Amazon Linux 2 v3.4.1 running Corretto 11"
+solution_stack_name_front = "64bit Amazon Linux 2 v5.6.1 running Node.js 16"

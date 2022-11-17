@@ -1,0 +1,25 @@
+gitlab:
+  image: gitlab/gitlab-ce
+  ports:
+    - "80:80"
+    - "443:443"
+    - "10022:22"
+  restart: always
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      gitlab_rails['gitlab_shell_ssh_port'] = 10022
+      # external_url 'https://gitlab.example.com'
+      # Add any other gitlab.rb configuration here, each on its own line
+  volumes:
+    - /home/pbousquet/Workspace/SQLI/Repositories/ws-everything-as-code/demo/pic/gitlab/config:/etc/gitlab
+    - /home/pbousquet/Workspace/SQLI/Repositories/ws-everything-as-code/demo/pic/gitlab/data:/var/opt/gitlab
+    - /home/pbousquet/Workspace/SQLI/Repositories/ws-everything-as-code/demo/pic/gitlab/logs:/var/log/gitlab
+jenkins:
+  image: jenkins/jenkins
+  ports:
+    - "8082:8080"
+    - "5000:5000"
+  volumes:
+    - /home/pbousquet/Workspace/SQLI/Repositories/ws-everything-as-code/demo/pic/jenkins:/var/jenkins_home
+  links:
+    - gitlab

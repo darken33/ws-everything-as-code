@@ -1,1 +1,0 @@
-# ws-everything-as-code

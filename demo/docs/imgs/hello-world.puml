@@ -1,0 +1,16 @@
+@startuml
+
+title Espace Agent - Activity Diagram
+
+(*) --> "Login"
+"Login" --> "Lister Clients"
+
+"Lister Clients" --> "Ajouter Client"
+"Lister Clients" --> "Supprimer Client"
+"Lister Clients" --> "Editer Client"
+"Lister Clients" --> "Lister Comptes"
+
+"Lister Comptes" --> "Ajouter Compte"
+"Lister Comptes" --> "Cloturer Compte"
+
+@enduml
