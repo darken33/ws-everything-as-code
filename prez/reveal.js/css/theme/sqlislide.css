@@ -1,0 +1,397 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+@import url("fonts/futura-std.css");
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+:root {
+  --background-color: #2b2b2b;
+  --main-font: FuturaStd, Helvetica, sans-serif;
+  --main-font-size: 28px;
+  --main-color: #000;
+  --block-margin: 20px;
+  --heading-margin: 0 0 20px 0;
+  --heading-font: FuturaStdHeavy, Helvetica, sans-serif;
+  --heading-color: #006554;
+  --heading-line-height: 1.2;
+  --heading-letter-spacing: normal;
+  --heading-text-transform: uppercase;
+  --heading-text-shadow: none;
+  --heading-font-weight: 600;
+  --heading1-text-shadow: none;
+  --heading1-size: 2.5em;
+  --heading2-size: 1.6em;
+  --heading3-size: 1.3em;
+  --heading4-size: 1em;
+  --code-font: monospace;
+  --link-color: #006554;
+  --link-color-hover: #00b294;
+  --selection-background-color: #00e5be;
+  --selection-color: #fff; }
+
+.reveal-viewport {
+  background: #2b2b2b;
+  background-color: #2b2b2b; }
+
+.reveal {
+  font-family: "FuturaStd", Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  color: #000; }
+
+.reveal ::selection {
+  color: #fff;
+  background: #00e5be;
+  text-shadow: none; }
+
+.reveal ::-moz-selection {
+  color: #fff;
+  background: #00e5be;
+  text-shadow: none; }
+
+.reveal .slides section,
+.reveal .slides section > section {
+  line-height: 1.3;
+  font-weight: inherit; }
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #006554;
+  font-family: "FuturaStdHeavy", Helvetica, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word; }
+
+.reveal h1 {
+  font-size: 2.5em; }
+
+.reveal h2 {
+  font-size: 1.6em; }
+
+.reveal h3 {
+  font-size: 1.3em; }
+
+.reveal h4 {
+  font-size: 1em; }
+
+.reveal h1 {
+  text-shadow: none; }
+
+/*********************************************
+ * OTHER
+ *********************************************/
+.reveal p {
+  margin: 20px 0;
+  line-height: 1.3; }
+
+/* Remove trailing margins after titles */
+.reveal h1:last-child,
+.reveal h2:last-child,
+.reveal h3:last-child,
+.reveal h4:last-child,
+.reveal h5:last-child,
+.reveal h6:last-child {
+  margin-bottom: 0; }
+
+/* Ensure certain elements are never larger than the slide itself */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 95%; }
+
+.reveal strong,
+.reveal b {
+  font-weight: bold; }
+
+.reveal em {
+  font-style: italic; }
+
+.reveal ol,
+.reveal dl,
+.reveal ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 0 1em; }
+
+.reveal ol {
+  list-style-type: decimal; }
+
+.reveal ul {
+  list-style-type: disc; }
+
+.reveal ul ul {
+  list-style-type: square; }
+
+.reveal ul ul ul {
+  list-style-type: circle; }
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+  display: block;
+  margin-left: 40px; }
+
+.reveal dt {
+  font-weight: bold; }
+
+.reveal dd {
+  margin-left: 40px; }
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  padding: 5px;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: inline-block; }
+
+.reveal q {
+  font-style: italic; }
+
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  text-align: left;
+  font-size: 0.55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); }
+
+.reveal code {
+  font-family: monospace;
+  text-transform: none; }
+
+.reveal pre code {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal; }
+
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.reveal table th {
+  font-weight: bold; }
+
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-bottom: 1px solid; }
+
+.reveal table th[align="center"],
+.reveal table td[align="center"] {
+  text-align: center; }
+
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
+  text-align: right; }
+
+.reveal table tbody tr:last-child th,
+.reveal table tbody tr:last-child td {
+  border-bottom: none; }
+
+.reveal sup {
+  vertical-align: super;
+  font-size: smaller; }
+
+.reveal sub {
+  vertical-align: sub;
+  font-size: smaller; }
+
+.reveal small {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  vertical-align: top; }
+
+.reveal small * {
+  vertical-align: top; }
+
+.reveal img {
+  margin: 20px 0; }
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a {
+  color: #006554;
+  text-decoration: none;
+  transition: color .15s ease; }
+
+.reveal a:hover {
+  color: #00b294;
+  text-shadow: none;
+  border: none; }
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #001914; }
+
+/*********************************************
+ * Frame helper
+ *********************************************/
+.reveal .r-frame {
+  border: 4px solid #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+
+.reveal a .r-frame {
+  transition: all .15s linear; }
+
+.reveal a:hover .r-frame {
+  border-color: #006554;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls {
+  color: #006554; }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+  color: #006554; }
+
+/*********************************************
+ * PRINT BACKGROUND
+ *********************************************/
+@media print {
+  .backgrounds {
+    background-color: #2b2b2b; } }
+
+.reveal section.has-light-background, .reveal section.has-light-background h1, .reveal section.has-light-background h2, .reveal section.has-light-background h3, .reveal section.has-light-background h4, .reveal section.has-light-background h5, .reveal section.has-light-background h6 {
+  color: #222; }
+
+.reveal h1 {
+  font-size: 2.4em;
+  color: #000; }
+
+.reveal h2 {
+  margin-bottom: 30px;
+  font-size: 1.5em; }
+
+.reveal p {
+  line-height: 1em;
+  margin: 10px 0; }
+
+.reveal:after {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  z-index: 30;
+  height: 65px;
+  width: 200px;
+  background: url(images/SQLI_DX_LOGO_vert.png) no-repeat;
+  background-size: 120px; }
+
+.reveal pre {
+  padding: 5px;
+  border: 1px solid #eee; }
+
+.reveal .small {
+  font-size: 80% !important; }
+
+.reveal .big {
+  font-size: 120% !important; }
+
+.reveal .quoteblock blockquote {
+  box-sizing: border-box;
+  text-align: justify;
+  font-style: italic; }
+  .reveal .quoteblock blockquote:before {
+    font-family: "Serif";
+    content: "\201c";
+    float: left;
+    font-size: 2.75em;
+    font-weight: bold;
+    line-height: 0.6em;
+    margin-left: -0.6em;
+    color: #006554;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+
+.reveal .admonitionblock {
+  margin: 1em 0;
+  font-size: 1.4rem; }
+  .reveal .admonitionblock .icon,
+  .reveal .admonitionblock .content {
+    padding: .25em .5em;
+    border: 1px solid;
+    border-radius: 2px 2px 0 0;
+    vertical-align: top; }
+  .reveal .admonitionblock.note .icon {
+    border-color: #a97024;
+    color: #a97024; }
+  .reveal .admonitionblock.note .content {
+    background-color: #a97024;
+    border-color: #a97024;
+    color: #fff; }
+  .reveal .admonitionblock.tip .icon {
+    border-color: #43A047;
+    color: #43A047; }
+  .reveal .admonitionblock.tip .content {
+    background-color: #43A047;
+    border-color: #43A047;
+    color: #fff; }
+  .reveal .admonitionblock.important .icon, .reveal .admonitionblock.caution .icon {
+    border-color: #FF5722;
+    color: #FF5722; }
+  .reveal .admonitionblock.important .content, .reveal .admonitionblock.caution .content {
+    background-color: #FF5722;
+    border-color: #FF5722;
+    color: #fff; }
+  .reveal .admonitionblock.warning .icon {
+    border-color: #EF6C00;
+    color: #EF6C00; }
+  .reveal .admonitionblock.warning .content {
+    background-color: #EF6C00;
+    border-color: #EF6C00;
+    color: #fff; }
+
+.reveal .imageblock img,
+.reveal .image img {
+  border: none;
+  box-shadow: none; }
+
+.reveal table.tableblock {
+  table-layout: fixed;
+  font-size: .8em !important;
+  line-height: 1em !important; }
+  .reveal table.tableblock td,
+  .reveal table.tableblock th {
+    padding: 0.2em 0.4em;
+    border-color: #ddd; }
+  .reveal table.tableblock tr:nth-of-type(even) {
+    background: #edf2f2; }
+  .reveal table.tableblock th {
+    padding-bottom: 15px; }

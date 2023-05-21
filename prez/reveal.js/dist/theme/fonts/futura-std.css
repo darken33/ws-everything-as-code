@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'FuturaStd';
+  src: url('FuturaStd-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaStd';
+  src: url('FuturaStd-LightOblique.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaStd';
+  src: url('FuturaStd-Medium.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaStd';
+  src: url('FuturaStd-MediumOblique.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaStdHeavy';
+  src: url('FuturaStd-Heavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
